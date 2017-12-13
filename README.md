@@ -1,2 +1,2 @@
 # AnalyticsApi
-an nodeJS api project to collect analytics events
+a nodeJS api project to collect analytics events
