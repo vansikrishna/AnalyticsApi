@@ -1,7 +1,7 @@
 {
-  "name": "nodejsapi",
+  "name": "analyticsapi",
   "version": "1.0.0",
-  "description": "sample nodejs api example",
+  "description": "event management api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "mongoose": "^4.13.7",
-    "nodemon": "^1.12.5"
+    "nodemon": "^1.12.6"
   },
   "dependencies": {
     "express": "^4.16.2",
