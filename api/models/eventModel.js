@@ -2,10 +2,34 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var appSchema = new Schema({
+    appName: {
+        type: String
+    },
+    appVersion:{
+        type: String
+    }
+});
+
+var dataSchema = new Schema({
+    dataValue: {
+        type: String
+    }, 
+    created_date:{
+        type: Date,
+        default: Date.now
+    },
+    event_ref:{
+        type: Schema.Types.ObjectId,
+        ref: 'event'
+    }
+});
+
 var eventSchema = new Schema({
-    appName:{
-        type: String,
-        required:'appName is mandatory'
+    // appName: appSchema,
+    data: {
+        type: Schema.Types.ObjectId,
+        ref: 'data'
     },
     eventType:{
         default: ['CLICK'],
@@ -20,10 +44,6 @@ var eventSchema = new Schema({
         type: String,
         default: 'TAG_ANALYTICS'
     },
-    data:{
-        type: String,
-        default: 'ABC'
-    },
     event_date:{
         type: Date,
         default: Date.now
@@ -31,13 +51,25 @@ var eventSchema = new Schema({
     created_date:{
         type: Date,
         default: Date.now
-    },
-    deviceId:{
-        type: String
-    },
-    deviceInfo:{
-        type: String
     }
+    // ,
+    // deviceId:{
+    //     type: String
+    // },
+    // deviceInfo:{
+    //     type: String
+    // }
 });
 
-module.exports = mongoose.model('events', eventSchema);
+// eventSchema.pre('init', function(next, data) {  
+//     Event.populate(data, {
+//       path: 'data'
+//     }, function(err, event) {
+//       data = event;
+//       next();
+//     });
+//   });
+
+
+module.exports = mongoose.model('data', dataSchema);
+module.exports = mongoose.model('event', eventSchema);

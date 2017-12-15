@@ -6,4 +6,10 @@ module.exports = function(app){
     app.route('/events')
         .get(eventController.get_all_events)
         .post(eventController.create_event);
+
+    app.route('/data')
+    .get(eventController.get_all_data);
+
+    app.route('/clearAll')
+    .post(eventController.delete_all);
 };
